@@ -17,7 +17,7 @@ class CustomerTest {
     @Test
     public void testAddRental() {
         Customer customer2 = new CustomerBuilder().withName("Sallie").build();
-        Movie movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
+        AbstractMovie movie1 = new RegularMovie("Gone with the Wind");
         Rental rental1 = new Rental(movie1, 3); // 3 day rental
         customer2.addRental(rental1);
     }
@@ -29,8 +29,8 @@ class CustomerTest {
     }
 
     @Test
-    public void statementForRegularMovie() {
-        Movie movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
+    public void statementForRegularAbstractMovie() {
+        AbstractMovie movie1 = new RegularMovie("Gone with the Wind");
         Rental rental1 = new Rental(movie1, 3); // 3 day rental
         Customer customer2 =
                 new CustomerBuilder()
@@ -46,8 +46,8 @@ class CustomerTest {
     }
 
     @Test
-    public void statementForNewReleaseMovie() {
-        Movie movie1 = new Movie("Star Wars", Movie.NEW_RELEASE);
+    public void statementForNewReleaseAbstractMovie() {
+        AbstractMovie movie1 = new NewReleaseMovie("Star Wars");
         Rental rental1 = new Rental(movie1, 3); // 3 day rental
         Customer customer2 =
                 new CustomerBuilder()
@@ -63,8 +63,8 @@ class CustomerTest {
     }
 
     @Test
-    public void statementForChildrensMovie() {
-        Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
+    public void statementForChildrensAbstractMovie() {
+        AbstractMovie movie1 = new ChildrenMovie("Madagascar");
         Rental rental1 = new Rental(movie1, 3); // 3 day rental
         Customer customer2
                 = new CustomerBuilder()
@@ -80,12 +80,12 @@ class CustomerTest {
     }
 
     @Test
-    public void statementForManyMovies() {
-        Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
+    public void statementForManyAbstractMovies() {
+        AbstractMovie movie1 = new ChildrenMovie("Madagascar");
         Rental rental1 = new Rental(movie1, 6); // 6 day rental
-        Movie movie2 = new Movie("Star Wars", Movie.NEW_RELEASE);
+        AbstractMovie movie2 = new NewReleaseMovie("Star Wars");
         Rental rental2 = new Rental(movie2, 2); // 2 day rental
-        Movie movie3 = new Movie("Gone with the Wind", Movie.REGULAR);
+        AbstractMovie movie3 = new RegularMovie("Gone with the Wind");
         Rental rental3 = new Rental(movie3, 8); // 8 day rental
         Customer customer1
                 = new CustomerBuilder()
@@ -102,5 +102,4 @@ class CustomerTest {
         assertEquals(expected, statement);
     }
 
-    //TODO make test for price breaks in code.
 }

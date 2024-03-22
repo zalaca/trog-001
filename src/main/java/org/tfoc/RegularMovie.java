@@ -1,0 +1,23 @@
+package org.tfoc;
+
+
+public class RegularMovie extends AbstractMovie {
+
+    private static final Double DEFAULT_COST = 2.0;
+
+    private static final Double EXTRA_COST = 1.5;
+
+    private static final Integer DAYS_CAP = 2;
+
+    public RegularMovie(String title){
+        super(title);
+    }
+
+    @Override
+    double calculateRentalCost(int daysRented) {
+
+        double cost = DEFAULT_COST;
+        if (daysRented > DAYS_CAP) cost += (daysRented - DAYS_CAP) * EXTRA_COST;
+
+        return cost;    }
+}

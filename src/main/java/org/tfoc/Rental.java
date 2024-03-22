@@ -1,24 +1,30 @@
 package org.tfoc;
 
+import lombok.Getter;
+
 /**
  * The rental class represents a customer renting a movie.
  */
+@Getter
 public class Rental {
 
-    private Movie _movie;
-    private int _daysRented;
+    private AbstractMovie movie;
+    private int daysRented;
 
-    public Rental(Movie movie, int daysRented) {
-        _movie = movie;
-        _daysRented = daysRented;
+    public Rental(AbstractMovie movie, int daysRented) {
+        this.movie = movie;
+        this.daysRented = daysRented;
     }
 
-    public int getDaysRented() {
-        return _daysRented;
+
+    public double calculateRentalCost(){
+
+        return movie.calculateRentalCost(daysRented);
     }
 
-    public Movie getMovie() {
-        return _movie;
+    public int calculateRentalFrequentRenderPoints() {
+
+        return movie.calculateRentalFrequentRenderPoints(daysRented);
     }
 
 }
