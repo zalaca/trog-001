@@ -17,7 +17,9 @@ public class RegularMovie extends AbstractMovie {
     double calculateRentalCost(int daysRented) {
 
         double cost = DEFAULT_COST;
-        if (daysRented > DAYS_CAP) cost += (daysRented - DAYS_CAP) * EXTRA_COST;
+        if (daysRented > DAYS_CAP) {
+            cost += (daysRented - DAYS_CAP) * EXTRA_COST;
+        }
 
         return cost;    }
 }
